@@ -1,5 +1,5 @@
-import AddButton from "./AddButton";
+import AddDialog from "./AddDialog";
 
 export default function Header() {
-  return <AddButton />;
+  return <AddDialog />;
 }
