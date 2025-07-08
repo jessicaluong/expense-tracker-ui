@@ -6,18 +6,28 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "../ui/button";
+import { currencyFormat } from "@/lib/utils";
+import type { Expense } from "@/lib/types";
 
-export default function ExpenseCard() {
+type ExpenseCardProps = {
+  expense: Expense;
+};
+
+export default function ExpenseCard({ expense }: ExpenseCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Expense description</CardTitle>
-        <CardDescription>Category</CardDescription>
-        <CardAction>Edit Delete</CardAction>
+        <CardTitle>{expense.description}</CardTitle>
+        <CardDescription>{expense.category}</CardDescription>
+        <CardAction className="flex gap-1">
+          <Button variant="secondary">Edit</Button>
+          <Button variant="secondary">Delete</Button>
+        </CardAction>
       </CardHeader>
       <CardContent>
-        <p>Price</p>
-        <p>Date</p>
+        <p>{currencyFormat(expense.amount)}</p>
+        <p>{new Date(expense.date).toLocaleDateString()}</p>
       </CardContent>
     </Card>
   );

@@ -5,16 +5,22 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { currencyFormat } from "@/lib/utils";
 
-export default function SummaryCard() {
+type SummaryCardProps = {
+  category: string;
+  total: number;
+};
+
+export default function SummaryCard({ category, total }: SummaryCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Category</CardTitle>
+        <CardTitle>{category}</CardTitle>
         <CardDescription></CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Spending / Budget</p>
+        <p>{currencyFormat(total)}</p>
       </CardContent>
     </Card>
   );
