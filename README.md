@@ -61,6 +61,8 @@ This is the low fidelity prototype. It covers the core requirements and is drawn
 
 ### Expense Data
 
+See [lib/schema.ts](https://github.com/jessicaluong/expense-tracker-ui/blob/main/src/lib/schema.ts) for Zod schema used for form validation.
+
 - Description is required and max length of 200
 - Amount is required, ranges from 1 to 999999.99, and can only have up to 2 decimal places
 - No restriction on date (can be set to future)
