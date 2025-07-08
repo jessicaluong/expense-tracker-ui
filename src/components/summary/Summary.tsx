@@ -1,16 +1,24 @@
 import { useExpensesContext } from "@/lib/hooks";
 import SummaryCard from "./SummaryCard";
 import { currencyFormat } from "@/lib/utils";
+import type { ExpenseCategory } from "@/lib/types";
+import { EXPENSE_CATEGORIES } from "@/lib/constants";
 
 export default function Summary() {
   const { expenses } = useExpensesContext();
 
-  const categoryTotals: Record<string, number> = {};
+  // type assertion because am certain EXPENSE_CATEGORIES is correct
+  const categoryTotals: Record<ExpenseCategory, number> = Object.fromEntries(
+    EXPENSE_CATEGORIES.map((category) => [category, 0])
+  ) as Record<ExpenseCategory, number>;
+
   let grandTotal: number = 0;
 
   for (const expense of expenses) {
-    categoryTotals[expense.category] =
-      (categoryTotals[expense.category] || 0) + expense.amount;
+    // ignore data with incorrect categories in summary
+    if (EXPENSE_CATEGORIES.includes(expense.category as ExpenseCategory)) {
+      categoryTotals[expense.category] += expense.amount;
+    }
     grandTotal += expense.amount;
   }
 
