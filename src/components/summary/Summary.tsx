@@ -18,8 +18,8 @@ export default function Summary() {
     // ignore data with incorrect categories in summary
     if (EXPENSE_CATEGORIES.includes(expense.category as ExpenseCategory)) {
       categoryTotals[expense.category] += expense.amount;
+      grandTotal += expense.amount;
     }
-    grandTotal += expense.amount;
   }
 
   return (
