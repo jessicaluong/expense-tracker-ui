@@ -23,7 +23,7 @@ export default function Summary() {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <h1 className="text-xl font-semibold">Summary</h1>
       {Object.entries(categoryTotals).map(([category, total]) => (
         <SummaryCard key={category} category={category} total={total} />

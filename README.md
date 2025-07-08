@@ -73,13 +73,18 @@ See [lib/schema.ts](https://github.com/jessicaluong/expense-tracker-ui/blob/main
 
 These should be added if time allows.
 
-### UI Improvements
+### UI/UX
 
-These UI additions would provide a better user experience.
+These additions would provide a better user experience.
 
 - Alert dialog so user can confirm if the delete should happen
 - Toast notification to confirm add/delete/edit has happened
 - Loading and error states for fetching data
+
+I do not have a background in UI/UX, but this is how I would iterate on the initial design for better user experience.
+
+- Summary in separate dialog instead of under expenses (otherwise need to scroll all the way down to see summary)
+- Multiple columns for larger screens (to fit more on the screen at a time) and continue to have one column for smaller screens
 
 ### Optimizations
 

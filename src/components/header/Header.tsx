@@ -1,5 +1,9 @@
 import AddDialog from "./AddDialog";
 
 export default function Header() {
-  return <AddDialog />;
+  return (
+    <div className="flex justify-end">
+      <AddDialog />
+    </div>
+  );
 }

@@ -4,13 +4,11 @@ import Summary from "./components/summary/Summary";
 
 function App() {
   return (
-    <main className="flex justify-center w-full p-[10px]">
-      <div className="flex w-full max-w-[1200px] sm:border rounded-xl">
-        <div className="flex-1 min-w-0 p-[10px]">
-          <Header />
-          <Expenses />
-          <Summary />
-        </div>
+    <main className="flex justify-center w-full p-4">
+      <div className="flex flex-col w-full max-w-[1200px] sm:border rounded-xl md:p-6 gap-4">
+        <Header />
+        <Expenses />
+        <Summary />
       </div>
     </main>
   );
