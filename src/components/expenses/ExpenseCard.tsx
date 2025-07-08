@@ -9,12 +9,19 @@ import {
 import { Button } from "../ui/button";
 import { currencyFormat } from "@/lib/utils";
 import type { Expense } from "@/lib/types";
+import { useExpensesContext } from "@/lib/hooks";
 
 type ExpenseCardProps = {
   expense: Expense;
 };
 
 export default function ExpenseCard({ expense }: ExpenseCardProps) {
+  const { removeExpense } = useExpensesContext();
+
+  const handleDelete = () => {
+    removeExpense(expense.id);
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -22,7 +29,9 @@ export default function ExpenseCard({ expense }: ExpenseCardProps) {
         <CardDescription>{expense.category}</CardDescription>
         <CardAction className="flex gap-1">
           <Button variant="secondary">Edit</Button>
-          <Button variant="secondary">Delete</Button>
+          <Button variant="secondary" onClick={handleDelete}>
+            Delete
+          </Button>
         </CardAction>
       </CardHeader>
       <CardContent>
