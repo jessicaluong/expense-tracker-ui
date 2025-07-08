@@ -5,6 +5,7 @@ type ExpensesContextType = {
   expenses: Expense[];
   removeExpense: (id: string) => void;
   addExpense: (expenseData: Omit<Expense, "id">) => void;
+  editExpense: (id: string, updatedExpenseData: Omit<Expense, "id">) => void;
 };
 
 type ExpensesContextProviderProps = {
@@ -41,8 +42,18 @@ export function ExpensesProvider({ children }: ExpensesContextProviderProps) {
     setExpenses((prev) => [...prev, newExpense]);
   };
 
+  const editExpense = (id: string, updatedExpenseData: Omit<Expense, "id">) => {
+    setExpenses((prev) =>
+      prev.map((expense) =>
+        expense.id === id ? { ...expense, ...updatedExpenseData } : expense
+      )
+    );
+  };
+
   return (
-    <ExpensesContext.Provider value={{ expenses, removeExpense, addExpense }}>
+    <ExpensesContext.Provider
+      value={{ expenses, removeExpense, addExpense, editExpense }}
+    >
       {children}
     </ExpensesContext.Provider>
   );

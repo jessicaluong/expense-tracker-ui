@@ -10,6 +10,7 @@ import { Button } from "../ui/button";
 import { currencyFormat } from "@/lib/utils";
 import type { Expense } from "@/lib/types";
 import { useExpensesContext } from "@/lib/hooks";
+import EditDialog from "./EditDialog";
 
 type ExpenseCardProps = {
   expense: Expense;
@@ -28,7 +29,7 @@ export default function ExpenseCard({ expense }: ExpenseCardProps) {
         <CardTitle>{expense.description}</CardTitle>
         <CardDescription>{expense.category}</CardDescription>
         <CardAction className="flex gap-1">
-          <Button variant="secondary">Edit</Button>
+          <EditDialog expense={expense} />
           <Button variant="secondary" onClick={handleDelete}>
             Delete
           </Button>
