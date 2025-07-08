@@ -8,22 +8,28 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
 import { AddForm } from "./AddForm";
+import { useState } from "react";
 
 export default function AddDialog() {
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Dialog>
-      <DialogTrigger>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
         <Button>Add Expense</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle>Add Expense</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            Add a new expense to your expense tracker.
           </DialogDescription>
         </DialogHeader>
-        <AddForm />
+        <AddForm onSuccess={handleClose} />
       </DialogContent>
     </Dialog>
   );

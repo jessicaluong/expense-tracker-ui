@@ -6,51 +6,145 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
+import { EXPENSE_CATEGORIES } from "@/lib/constants";
+import { createFormSchema } from "@/lib/schema";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useExpensesContext } from "@/lib/hooks";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-});
+type AddFormProps = {
+  onSuccess: () => void;
+};
 
-export function AddForm() {
-  // 1. Define your form.
+export function AddForm({ onSuccess }: AddFormProps) {
+  const { addExpense } = useExpensesContext();
+
+  const formSchema = createFormSchema();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      description: "",
+      amount: 0,
+      category: undefined,
+      date: new Date(),
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    const expenseData = {
+      ...values,
+      date: values.date.toISOString().split("T")[0], // "YYYY-MM-DD"
+    };
+    addExpense(expenseData);
+    onSuccess();
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
-          name="username"
+          name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Description</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Monthly subway pass" {...field} />
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="amount"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Amount</FormLabel>
+              <FormControl>
+                <Input placeholder="0" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="category"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Category</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a category" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {EXPENSE_CATEGORIES.map((category) => {
+                    return (
+                      <SelectItem key={category} value={category}>
+                        {category}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="date"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Date</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      data-empty={!field.value}
+                      className="data-[empty=true]:text-muted-foreground w-[280px] justify-start text-left font-normal"
+                    >
+                      <CalendarIcon />
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0">
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
+                </PopoverContent>
+              </Popover>{" "}
               <FormMessage />
             </FormItem>
           )}

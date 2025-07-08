@@ -4,6 +4,7 @@ import { useState, createContext, useEffect } from "react";
 type ExpensesContextType = {
   expenses: Expense[];
   removeExpense: (id: string) => void;
+  addExpense: (expenseData: Omit<Expense, "id">) => void;
 };
 
 type ExpensesContextProviderProps = {
@@ -26,8 +27,22 @@ export function ExpensesProvider({ children }: ExpensesContextProviderProps) {
     setExpenses((prev) => prev.filter((expense) => expense.id !== id));
   };
 
+  const addExpense = (expenseData: Omit<Expense, "id">) => {
+    // follow existing pattern for id from mock data and increment starting from max id
+    const maxId =
+      expenses.length > 0
+        ? Math.max(...expenses.map((e) => parseInt(e.id)))
+        : 0;
+
+    const newExpense: Expense = {
+      ...expenseData,
+      id: (maxId + 1).toString(),
+    };
+    setExpenses((prev) => [...prev, newExpense]);
+  };
+
   return (
-    <ExpensesContext.Provider value={{ expenses, removeExpense }}>
+    <ExpensesContext.Provider value={{ expenses, removeExpense, addExpense }}>
       {children}
     </ExpensesContext.Provider>
   );
