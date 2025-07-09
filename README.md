@@ -1,6 +1,6 @@
 # Expense Tracker UI
 
-<img width="600" alt="expenses" src="https://github.com/user-attachments/assets/1e64911c-acfc-4549-8380-0da3ca1117c3" />
+<img width="767" alt="preview" src="https://github.com/user-attachments/assets/77e2ec3a-60df-4400-aa4a-52ae1becd8e8" />
 
 ## Table of Contents
 
@@ -43,11 +43,13 @@ Visit: http://localhost:5173/
 
 ## Basic Usage Guide
 
-These images describes usage of the core features + search and filter functionality (bonus feature):
+The app displays all expenses. Core features + search and filter functionality (bonus features) are as shown: 
 
-<img width="930" alt="expenses" src="https://github.com/user-attachments/assets/ae50348a-7da7-4ffe-a4a9-432b3b0b43b8" />
+<img width="898" alt="usage" src="https://github.com/user-attachments/assets/3becfeb7-06dd-404a-9eb4-3be972bd14e3" />
 
-<img width="930" alt="summary" src="https://github.com/user-attachments/assets/de48280e-ca95-49ed-96ae-4535b0ac8a6c" />
+Basic spending summaries can be found by scrolling to the bottom of the app: 
+
+<img width="700" alt="summary" src="https://github.com/user-attachments/assets/d73aca5b-466c-4ec3-8d31-4100111d9879" />
 
 <div id="design"></div>
 
@@ -97,7 +99,7 @@ These additions would provide a better user experience.
 - Toast notification to confirm add/delete/edit has happened
 - Loading and error states for fetching data
 
-I do not have a background in UI/UX, but this is how I would iterate on the initial design for better user experience.
+My experience with UI/UX is limited, but this is how I would iterate on the initial design for better user experience.
 
 - Summary in separate dialog instead of under expenses (otherwise need to scroll all the way down to see summary)
 - Multiple columns for larger screens (to fit more on the screen at a time) and continue to have one column for smaller screens
