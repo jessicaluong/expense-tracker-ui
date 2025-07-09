@@ -1,5 +1,7 @@
 # Expense Tracker UI
 
+<img width="600" alt="expenses" src="https://github.com/user-attachments/assets/1e64911c-acfc-4549-8380-0da3ca1117c3" />
+
 ## Table of Contents
 
 - [Tech Stack](#stack)
@@ -40,9 +42,15 @@ Visit: http://localhost:5173/
 
 ## Basic Usage Guide
 
+I only had time to implement the core functionality. CRUD operations can be used as follows: 
+
+<img width="930" alt="expenses" src="https://github.com/user-attachments/assets/ae50348a-7da7-4ffe-a4a9-432b3b0b43b8" />
+
+<img width="930" alt="summary" src="https://github.com/user-attachments/assets/de48280e-ca95-49ed-96ae-4535b0ac8a6c" />
+
 <div id="design"></div>
 
-## Design
+## Initial Design
 
 This is the low fidelity prototype. It covers the core requirements and is drawn using https://excalidraw.com/.
 
