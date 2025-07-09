@@ -7,7 +7,7 @@
 - [Tech Stack](#stack)
 - [Setup and Run Instructions](#setup)
 - [Basic Usage Guide](#usage)
-- [Design](#design)
+- [Initial Design](#design)
 - [Assumptions](#assumptions)
 - [Bonus Features Implemented](#bonus)
 - [Future Improvements](#improvements)
