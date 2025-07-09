@@ -1,13 +1,13 @@
-import { useExpensesContext } from "@/lib/hooks";
+import { useFilterContext } from "@/lib/hooks";
 import ExpenseCard from "./ExpenseCard";
 import { EXPENSE_CATEGORIES } from "@/lib/constants";
 import type { ExpenseCategory } from "@/lib/types";
 
 export default function Expenses() {
-  const { expenses } = useExpensesContext();
+  const { filteredExpenses } = useFilterContext();
 
   // for consistency with summary, ignore expenses with incorrect categories
-  const validExpenses = expenses.filter((expense) =>
+  const validExpenses = filteredExpenses.filter((expense) =>
     EXPENSE_CATEGORIES.includes(expense.category as ExpenseCategory)
   );
 
