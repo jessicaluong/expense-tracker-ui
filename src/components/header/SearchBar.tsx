@@ -27,7 +27,7 @@ export default function SearchBar({ className }: SearchBarProps) {
       <Input
         className="pl-8 w-full sm:flex-1 sm:min-w-[400px] sm:max-w-[500px]"
         type="text"
-        placeholder="Search by item name and brand"
+        placeholder="Search by description"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
