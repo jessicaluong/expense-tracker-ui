@@ -1,6 +1,8 @@
 # Expense Tracker UI
 
-<img width="767" alt="preview" src="https://github.com/user-attachments/assets/77e2ec3a-60df-4400-aa4a-52ae1becd8e8" />
+Try out app here: [Expense Tracker App](https://expense-tracker-ui-hazel.vercel.app/)
+
+<img width="700" alt="preview" src="https://github.com/user-attachments/assets/77e2ec3a-60df-4400-aa4a-52ae1becd8e8" />
 
 ## Table of Contents
 
@@ -20,7 +22,7 @@ This app uses React, Vite, TypeScript, Tailwind CSS and shadcn/ui
 
 <div id="setup"></div>
 
-## Setup and Run Instructions
+## Setup and Run Instructions (Locally) 
 
 ### 1. Clone the Repository
 
@@ -29,13 +31,22 @@ git clone https://github.com/jessicaluong/expense-tracker-ui.git
 cd expense-tracker-ui
 ```
 
-### 2. Run Application
+### 2. Install Dependencies 
+```
+npm install
+```
+
+### 3. Update Node (if needed)
+
+See: https://nodejs.org/en/download
+
+### 4. Run Application in Dev  
 
 ```
 npm run dev
 ```
 
-### 3. Open Application
+### 5. Open Application
 
 Visit: http://localhost:5173/
 
@@ -82,8 +93,12 @@ See [lib/schema.ts](https://github.com/jessicaluong/expense-tracker-ui/blob/main
 
 ## Bonus Features Implemented
 
-- Search by description through search bar
-- Filter by category
+- Search by description through search bar (with debouncing) 
+- Filter by category through select 
+
+Search and filter are handled through [Filter Context](https://github.com/jessicaluong/expense-tracker-ui/blob/main/src/contexts/FilterProvider.tsx).
+
+<img width="1221" alt="search" src="https://github.com/user-attachments/assets/f2174d10-510a-4d63-8458-bd8705170565" />
 
 <div id="improvements"></div>
 
