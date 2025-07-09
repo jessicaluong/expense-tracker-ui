@@ -9,7 +9,8 @@
 - [Basic Usage Guide](#usage)
 - [Design](#design)
 - [Assumptions](#assumptions)
-- [Future Improvements](#extras)
+- [Bonus Features Implemented](#bonus)
+- [Future Improvements](#improvements)
 
 <div id="stack"></div>
 
@@ -42,7 +43,7 @@ Visit: http://localhost:5173/
 
 ## Basic Usage Guide
 
-I only had time to implement the core functionality. CRUD operations can be used as follows: 
+These images describes usage of the core features + search and filter functionality (bonus feature):
 
 <img width="930" alt="expenses" src="https://github.com/user-attachments/assets/ae50348a-7da7-4ffe-a4a9-432b3b0b43b8" />
 
@@ -75,7 +76,14 @@ See [lib/schema.ts](https://github.com/jessicaluong/expense-tracker-ui/blob/main
 - Amount is required, ranges from 1 to 999999.99, and can only have up to 2 decimal places
 - No restriction on date (can be set to future)
 
-<div id="extras"></div>
+<div id="bonus"></div>
+
+## Bonus Features Implemented
+
+- Search by description through search bar
+- Filter by category
+
+<div id="improvements"></div>
 
 ## Future Improvements
 
